@@ -53,7 +53,7 @@ public class HelloSelenium {
         try {
             driver.get("http://google.com/ncr");
             driver.findElement(By.name("q")).sendKeys("cheese" + Keys.ENTER);
-            WebElement firstResult = wait.until(presenceOfElementLocated(By.cssSelector("h3>a")));
+            WebElement firstResult = wait.until(presenceOfElementLocated(By.cssSelector("a>h3")));
             System.out.println(firstResult.getText());
         } finally {
             driver.quit();
@@ -71,7 +71,7 @@ with webdriver.Firefox() as driver:
     wait = WebDriverWait(driver, 10)
     driver.get("http://google.com/ncr")
     driver.find_element_by_name("q").send_keys("cheese" + Keys.RETURN)
-    first_result = wait.until(presence_of_element_located((By.CSS_SELECTOR, "h3>a")))
+    first_result = wait.until(presence_of_element_located((By.CSS_SELECTOR, "a>h3")))
     print(first_result.text)</code>
  <code class=cs>using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -93,7 +93,7 @@ namespace Selenium.Docs
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             driver.Navigate().GoToUrl("http://www.google.com/ncr");
             driver.FindElement(By.Name("q")).SendKeys("cheese" + Keys.Return);
-            IWebElement firstResult = wait.Until(wd => wd.FindElement(By.CssSelector("h3>a")));
+            IWebElement firstResult = wait.Until(wd => wd.FindElement(By.CssSelector("a>h3")));
             Console.WriteLine(firstResult.Text);
         }
 
@@ -112,7 +112,7 @@ wait = Selenium::WebDriver::Wait.new(timeout: 10)
 begin
   driver.get 'http://google.com'
   driver.find_element(name: 'q').send_keys 'cheese', :return
-  first_result = wait.until { driver.find_element(css: 'h3>a') }
+  first_result = wait.until { driver.find_element(css: 'a>h3') }
   puts first_result.text
 ensure
   driver.quit
@@ -124,7 +124,7 @@ end</code>
     try {
         await driver.get('http://www.google.com/ncr');
         await driver.findElement(By.name('q')).sendKeys('cheese', Key.RETURN);
-        let firstResult = await driver.wait(until.elementLocated(By.css('h3>a')),10000);
+        let firstResult = await driver.wait(until.elementLocated(By.css('a>h3')),10000);
         console.log(await firstResult.getText());
     } finally {
         await driver.quit();
